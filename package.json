@@ -1,0 +1,15 @@
+{
+  "name": "jwt-verification-middleware",
+  "version": "1.0.0",
+  "description": "jwt-verfication-middleware for node js",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muhammed Ajmal",
+  "license": "MIT",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  }
+}
