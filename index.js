@@ -1,29 +1,31 @@
 import jwt from "jsonwebtoken"
 
-export const jwtVerfication=(secret)=>{
+export const jwtVerfication = (secret) => {
 
-   return async(req,res,next)=>{
- 
+    return async (req, res, next) => {
 
-    const token = req.headers['authorization'].split(' ')[1]
-       
-       if(!token) return res.json({message:"token is not found ..please login"})
-       else{
-       
-           try{
+        // Get the token from the request headers
+        const token = req?.headers['authorization'].split(' ')[1]
 
-            const userdata=await jwt.verify(token,secret)
-            req.userdata=userdata
-            console.log('verfied succesfull')
-            next()
+        // Check if the token is missing
+        if (!token) return res.json({ message: "token is not found ..please login" })
+        else {
 
-           }catch(err){
+            try {
+                // Verify the token using your secret or public key
+                const userdata = await jwt.verify(token, secret)
+                // Attach the decoded payload to the request object for further use
+                req.userdata = userdata
+                console.log('verfied succesfull')
+                next()
 
-            return res.json({message:'error occured while verifying account using jwt...token is not mathcing ',error:err})
- 
-           }
-    
-    }
+            } catch (err) {
+                 // Handle invalid or expired tokens
+                return res.json({ message: 'error occured while verifying account using jwt...token is not mathcing ', error: err })
+
+            }
+
+        }
 
     }
 
