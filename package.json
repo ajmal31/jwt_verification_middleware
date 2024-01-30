@@ -1,6 +1,6 @@
 {
   "name": "jwt-verification-middleware",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "jwt-verfication-middleware for node js",
   "type": "module",
   "main": "index.js",

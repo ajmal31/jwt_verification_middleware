@@ -5,7 +5,7 @@ export const jwtVerfication = (secret) => {
     return async (req, res, next) => {
 
         // Get the token from the request headers
-        const token = req?.headers['authorization'].split(' ')[1]
+        const token = req?.headers['authorization']?.split(' ')[1]
 
         // Check if the token is missing
         if (!token) return res.json({ message: "token is not found ..please login" })
@@ -21,7 +21,7 @@ export const jwtVerfication = (secret) => {
 
             } catch (err) {
                  // Handle invalid or expired tokens
-                return res.json({ message: 'error occured while verifying account using jwt...token is not mathcing ', error: err })
+                return res.json({ message: 'error occured while verifying account using jwt...token is not mathcing ', error: err }).status(401)
 
             }
 
